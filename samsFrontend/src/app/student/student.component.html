@@ -1,0 +1,123 @@
+<div class="parent">
+    <h2 mat-dialog-title>Student Form</h2>
+    <mat-dialog-content>
+        <div class="child">
+
+            <mat-card>
+             
+                <mat-card-content>
+                    <div>
+                        <form [formGroup]="StudentForm">
+                            <div>
+                                <div>
+                                    <mat-label>Enter Student name</mat-label>
+                                </div>
+                                <div class="col-6">
+                                    <mat-form-field appearance="outline">
+                                        <input matInput placeholder="name" formControlName="name">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="col-12">
+                                    <mat-label>Enter Father name</mat-label>
+                                </div>
+                                <div class="col-6">
+                                    <mat-form-field appearance="outline">
+                                        <input matInput placeholder="father name" formControlName="Father_Name">
+                                    </mat-form-field>
+                                </div>
+
+                            </div>
+                            <div class="col-12">
+                                <div class="col-12">
+                                    <mat-label>Enter Mobile Number</mat-label>
+                                </div>
+                                <div class="col-6">
+                                    <mat-form-field appearance="outline">
+                                        <input matInput placeholder="mobile" formControlName="Mobile">
+                                    </mat-form-field>
+                                </div>
+
+                            </div>
+
+                            <div class="col-12">
+                                <div class="col-12">
+                                    <mat-label>Enter Cut off</mat-label>
+                                </div>
+                                <div class="col-6">
+                                    <mat-form-field appearance="outline">
+                                        <input matInput formControlName="cutoff">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="col-12" *ngIf="!isUpdate">
+                                <div class="col-12">
+                                    <mat-label>choose department</mat-label>
+                                </div>
+                                <div class="col-6">
+                                    <mat-form-field appearance="outline">
+                                        <mat-select formControlName="department" [(ngModel)]="dept"
+                                            (selectionChange)="getCourseInfo(dept)">
+                                            <mat-option *ngFor="let dept of department"
+                                                value="{{dept.deptId}}">{{dept.deptName}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="col-12" *ngIf="!isUpdate">
+                                <div class="col-12">
+                                    <mat-label>choose course</mat-label>
+                                </div>
+                                <div class="col-6">
+                                    <mat-form-field appearance="outline">
+                                        <mat-select formControlName="course">
+                                            <mat-option *ngFor="let dept of course"
+                                                [value]="dept.courseId">{{dept.courseName}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="col-12" *ngIf="!isUpdate">
+                                <div class="col-12">
+                                    <mat-label>choose Batch</mat-label>
+                                </div>
+                                <div class="col-6">
+                                    <mat-form-field appearance="outline">
+                                        <mat-select formControlName="batch">
+                                            <mat-option *ngFor="let dept of batch"
+                                                [value]="dept.batchId">{{dept.batchYear}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="col-12">
+                                    <mat-label>choose Admission Status</mat-label>
+                                </div>
+                                <div class="col-6">
+                                    <mat-form-field appearance="outline">
+                                        <mat-select formControlName="isAdmitted">
+                                            <mat-option value="1">Admitted</mat-option>
+                                            <mat-option value="0"> not Admitted</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </mat-card-content>
+                
+            </mat-card>
+        </div>
+        <mat-dialog-actions>
+            <div>
+
+                <button mat-raised-button color="accent" (click)="submit()">{{(!isUpdate) ? "Add" : "Update"}}</button>
+                <button mat-raised-button   color="warn" (click)="onclose()">close</button>
+            </div>
+        </mat-dialog-actions>
+    </mat-dialog-content>
+</div>

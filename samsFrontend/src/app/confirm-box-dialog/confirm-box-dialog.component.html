@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>{{tittle}}</h2>
+<mat-dialog-content>
+{{msg}}
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="submit(false)">No</button>
+  <button mat-button  cdkFocusInitial (click)="submit(true)">Ok</button>
+</mat-dialog-actions>
